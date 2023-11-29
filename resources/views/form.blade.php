@@ -44,14 +44,19 @@
     </div>
 
     <div class="flex items-center gap-2">
-        <button type="submit" class="btn">
+        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
         @isset($task)
           Update Task
         @else
           Add Task
         @endisset
       </button>
-      <a href="{{ route('tasks.index') }}" class="link">Cancel</a>
+
+      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+        <a href="{{ route('tasks.index') }}">Cancel</a>
+
+      </button>
+
     </div>
   </form>
 @endsection
