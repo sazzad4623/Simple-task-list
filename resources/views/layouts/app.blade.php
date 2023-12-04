@@ -8,6 +8,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="//unpkg.com/alpinejs" defer></script>
   <style type="text/tailwindcss">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
     .btn {
       @apply rounded-md px-2 py-1 text-center font-medium text-slate-700 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50
     }
@@ -50,5 +52,7 @@
     @yield('content')
   </div>
 </body>
-
+<script src="../path/to/datatables.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 </html>

@@ -16,4 +16,9 @@ class Task extends Model
         $this->completed = !$this->completed;
         $this->save();
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
