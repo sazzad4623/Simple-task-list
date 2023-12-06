@@ -3,10 +3,24 @@
 @section('title', $task->title)
 
 @section('content')
+{{-- @if($task->category) --}}
+    {{-- <h1 class="mb-4 text-slate-700">Category:  {{$category->title }}</h1> --}}
+{{-- @else
+    <p>No category associated with this task.</p>
+@endif --}}
+
 <div class="mb-4">
     <a href="{{ route('tasks.index') }}" class="link">← Go back to the task list!</a>
   </div>
 <div>
+
+    @if ($task->category)
+
+    <p>Category: {{ $task->category->title }}</p>
+
+@else
+    <p>No category associated with this task.</p>
+@endif
     <h1 class="mb-4 text-slate-700">Description: {{ $task->description }}</h1>
   {{-- <p class="mb-4 text-slate-700">{{ $task->description }}</p> --}}
 </div>

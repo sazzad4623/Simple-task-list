@@ -9,7 +9,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'long_description'];
+    protected $fillable = ['title', 'description', 'long_description', 'category_id'];
 
     public function toggleComplete()
     {
@@ -19,6 +19,6 @@ class Task extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)->withDefault();
     }
 }

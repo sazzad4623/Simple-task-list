@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CategoryRequest extends FormRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+class TagRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +23,14 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        $categoryId = $this->route('category'); // Assuming 'category' is the route parameter name
-
-    return [
-        'title' => [
-            'required',
-            'string',
-            'max:255',
-            Rule::unique('categories', 'title')->ignore($categoryId),
-        ],
+        $tagId = $this->route('tag');
+        return [
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('tags', 'title')->ignore($tagId),
+            ],
             'description' => 'required',
 
 

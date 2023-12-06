@@ -1,22 +1,11 @@
+
 @extends('layouts.app')
 
-<h6 class=" text-blue-600/100 font-bold container mx-auto mt-10 mb-10 ml-60">List of Tasks</h6>
+<h6 class=" text-blue-600/100 font-bold container mx-auto mt-10 mb-10 ml-60">List of Tags</h6>
 
 @section('content')
 
 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
-    <nav>
-        <a href="{{ route('tasks.create') }}" >Add Task!</a>
-      </nav>
-  </button>
-
-  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
-    <nav>
-        <a href="{{ route('categories.create') }}" >Add Category!</a>
-      </nav>
-  </button>
-
-  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
     <nav>
         <a href="{{ route('tags.create') }}" >Add Tag!</a>
       </nav>
@@ -24,21 +13,17 @@
 
   <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
     <nav>
-        <a href="{{ route('categories.index') }}" >Categories</a>
+        <a href="{{ route('tasks.create') }}" >Add Task!</a>
       </nav>
   </button>
 
-  <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
-    <nav>
-        <a href="{{ route('tags.index') }}" >Tags</a>
-      </nav>
-  </button>
+  <div class="mb-4">
+    <a href="{{ route('tasks.index') }}" class="link">← Go back to the task list!</a>
+  </div>
+<div>
 
 
 
-
-
-  @if(count($tasks) > 0)
   <table class="table" id="tasksTable" class="display">
     <thead>
       <tr class="ml-4">
@@ -49,11 +34,11 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($tasks as $task)
+      @foreach($tags as $tag)
         <tr>
           <td>
-            <a href="{{ route('tasks.show', ['task' => $task->id]) }}"
-              >{{ $task->title }}</a>
+            <a href="{{ route('tags.show', ['tag' => $tag->id]) }}"
+              >{{ $tag->title }}</a>
           </td>
 
 
@@ -62,7 +47,7 @@
 
 
             <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full">
-                <a href="{{ route('tasks.show', ['task' => $task]) }}"
+                <a href="{{ route('tags.show', ['tag' => $tag]) }}"
                     >Show</a>
               </button> </div> </td>
 
@@ -71,7 +56,7 @@
 
 
             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                <a href="{{ route('tasks.edit', ['task' => $task]) }}"
+                <a href="{{ route('tags.edit', ['tag' => $tag]) }}"
                     >Edit</a>
               </button> </div> </td>
 
@@ -80,7 +65,7 @@
 
 
 </button> <button>
-              <form action="{{ route('tasks.destroy', ['task' => $task->id]) }}" method="POST">
+              <form action="{{ route('tags.destroy', ['tag' => $tag->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" type="submit" onclick="return confirm('are you sure you want to delete this post')">Delete</button>
@@ -95,17 +80,7 @@
       @endforeach
     </tbody>
   </table>
-@else
-  <div>There are no tasks!</div>
-@endif
-@if ($tasks->count() > 0)
-<nav aria-label="Tasks navigation">
-  {{ $tasks->links() }}
-</nav>
-@endif
+
+
 @endsection
-
-
-
-
 

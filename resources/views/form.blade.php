@@ -43,6 +43,14 @@
       @enderror
     </div>
 
+    <label for="category">Select Category:</label>
+    <select id="category" name="category_id" required>
+        <option value="">Select Category</option>
+        @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->title }}</option>
+        @endforeach
+    </select>
+
     <div class="flex items-center gap-2">
         <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
         @isset($task)
